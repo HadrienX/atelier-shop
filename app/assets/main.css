@@ -1,0 +1,36 @@
+:root {
+  --text: #1f1d1a;
+  --muted: #6b665e;
+  --border: #e5e0d8;
+  --surface: #f6f3ee;
+  --accent: #8a5a3b;
+  --danger: #b42318;
+  color-scheme: light;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: #fff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
