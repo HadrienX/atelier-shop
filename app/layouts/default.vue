@@ -1,12 +1,19 @@
 <script setup lang="ts">
 const { public: { siteName } } = useRuntimeConfig()
+const { count, isOpen } = useCart()
 </script>
 
 <template>
   <div class="layout">
     <header class="header">
       <NuxtLink to="/" class="header__logo">{{ siteName }}</NuxtLink>
+      <SearchAutocomplete />
+      <button class="header__cart" @click="isOpen = true">
+        Panier <span class="header__badge">{{ count }}</span>
+      </button>
     </header>
+
+    <CartDrawer v-if="isOpen" />
 
     <main class="main">
       <slot />
@@ -37,6 +44,24 @@ const { public: { siteName } } = useRuntimeConfig()
   font-size: 1.25rem;
   text-decoration: none;
   color: inherit;
+}
+.header__cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+}
+.header__badge {
+  min-width: 1.5rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
 }
 .main {
   flex: 1;
